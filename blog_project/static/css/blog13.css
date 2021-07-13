@@ -1,0 +1,43 @@
+.content{
+    width: 70%;
+    float: left;
+    padding: 0 0 0 30px;
+    color: snow;
+}
+
+.sidebar{
+    width: 30%;
+    float: right;
+    padding: 10px;
+    background-color: coral;
+}
+
+body{
+    background-color: tan;
+
+}
+
+h2{
+    text-align: center;
+    border-bottom: 1px solid green;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+#date,#ch{
+    color: green;
+    font-size: 12px;
+    font-style: oblique;
+}
+a{
+    color: darkblue;
+}
+h3{
+    font-size: 40px;
+    font-style: italic;
+    color: crimson;
+}
+#pcount{
+    font-size: 30px;
+    color: blue;
+    font-weight: bold;
+}

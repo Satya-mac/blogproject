@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load blog_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static "css/blog13.css" %}">
+    <title>{%block title_block%}{%endblock%}</title>
+</head>
+<body>
+    <div class="content">
+        {%block content_block%}{%endblock%}
+    </div>
+    <div class="sidebar">
+        <h1>Strange's Blog</h1>
+        <p>Updated Published Post:<span id='pcount'>{% my_tag %}</span></p>
+        <h5>Latest Posts:</h5>{%show_latest_post%}
+        <h5>Most Commented Posts:</h5>
+        {% get_most_commented_post as most_commented_post %}
+        <ul>
+            {% for post in most_commented_post %}
+            <li><a href="{{post.get_absolute_url}}">{{post.title}}</a></li>
+            {%endfor%}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'blog/base.html'%}
+{%block title_block%}{{post.title}}{%endblock%}
+
+    {%block content_block%}
+        <h3>{{post.title}}</h3>
+            <p id='date' >published on {{post.publish}} by {{post.author|title}}</p>
+            {{post.body|linebreaks}}<br><br>
+            <a href="/{{post.id}}" class="btn btn-outline-primary">Share</a>
+            <a href="/" class="btn btn-outline-dark">Home</a><br><br>
+            {%with comments.count as comments_count%}
+                <h1>{{comments_count}} Comment{{comments_count | pluralize}}</h1>
+            {%endwith%}
+            {%if comments%}
+                {%for comment in comments%}
+                <p id='ch'> {{forloop.counter}} By {{comment.name}} On {{comment.created}}</p>
+                <div class="cb">{{comment.body|linebreaks}}</div>
+                {%endfor%}
+                {%else%}
+                <p>There Are No Comments Yet.</p>
+            {%endif%}
+            {%if csubmit%}
+            <h4>Your Comment Added Successfully</h4>
+            {%else%}
+            <form method="POST">
+                {{form.as_p}}
+                {%csrf_token%}
+                <input type="submit" class="btn btn-outline-warning" value="Comment"><br><br>
+            </form>
+            {%endif%}
+    {%endblock%}
